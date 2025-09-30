@@ -2,7 +2,7 @@
 title = "Daramel"
 +++
 
-<img src="/images/logo.png" alt="Logo">
+<img src='{{ "images/Logo.png" | relURL}}' alt="Logo"> 
 
 # Daramel
 
