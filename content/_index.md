@@ -47,6 +47,17 @@ form.addEventListener('submit', (e) => {
 });
 </script>
 
+<div class="social-follow">
+  <p>follow along!</p>
+  <a href="https://www.tiktok.com/@eatdaramel" target="_blank" aria-label="TikTok">
+    <i class="fab fa-tiktok social-icon"></i>
+  </a>
+  <a href="https://www.instagram.com/eatdaramel/" target="_blank" aria-label="Instagram">
+    <i class="fab fa-instagram social-icon"></i>
+  </a>
+</div>
+
+
 
 <!-- Falling date logos -->
 

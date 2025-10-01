@@ -107,6 +107,41 @@ button:hover {
   font-weight: 600;
 }
 
+.social-follow {
+  margin-top: 0.25rem; /* pulls it closer to the button */
+  text-align: center;
+}
+
+.social-follow p {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: #5A2B22;
+}
+
+.social-follow a {
+  text-decoration: none;   /* removes blue underline */
+  color: inherit;          /* makes icons use your set color */
+  margin: 0 0.5rem;        /* spacing between icons */
+}
+
+.social-follow a:hover {
+  color: #D8A79E;          /* optional hover color */
+}
+
+.social-icon {
+  font-size: 2rem;
+  margin: 0 10px;
+  color: #5A2B22;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.social-icon:hover {
+  transform: scale(1.2);
+  color: #D8A79E;
+}
+
+
+
 /* Mobile responsiveness */
 @media (max-width: 480px) {
   body {
