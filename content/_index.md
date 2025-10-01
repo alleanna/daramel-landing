@@ -9,9 +9,11 @@ title = "Daramel"
 Introducing...
 </p>
 
-<img src="/images/logo.png" alt="Logo">
+<!-- <img src="/images/logo.png" alt="Logo"> -->
 
-# Daramel
+<img src="/images/jar.png" alt="Jar" class="jar-logo">
+
+# DARAMEL
 
 
 <p class="description">
@@ -90,7 +92,7 @@ for (let i = 0; i < totalLogos; i++) {
   logos.push({
     x: Math.random() * canvas.width,
     y: Math.random() * canvas.height,
-    speed: 1 + Math.random() * 3,
+    speed: 1 + Math.random() * 1.5,
     size: 30 + Math.random() * 30,
     img: loadedImages[Math.floor(Math.random() * loadedImages.length)]
   });

@@ -14,6 +14,18 @@ main {
 }
 
 
+.jar-logo {
+  max-width: 150px;         /* limits width on desktop */
+  width: 50%;               /* optional: scales with container */
+  height: auto;             /* maintain aspect ratio */
+  display: block;           /* allows margin auto centering */
+  margin-top: 0.5rem;      /* less space above jar */
+  margin-bottom: 1rem; 
+
+}
+
+
+
 body {
   font-family: 'Agbalumo', sans-serif;
   background-color: #FFF4E1; /* Soft caramel tone */
@@ -51,9 +63,9 @@ p.description {
   text-align: left;
   width: 100%;
   color: #5A2B22 !important;
-  font-size: 1.4 rem;
-  margin-bottom: 2rem;
-  margin-top: 2rem; /* add some space from top */
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  margin-top: 4rem; /* add some space from top */
 }
 
 img {
@@ -115,10 +127,12 @@ button:hover {
     width: 100%;
   }
 
-  .description-left {
-    font-size: 1.1rem;     /* smaller for mobile */
-    margin-top: 1rem;      /* reduce spacing */
+  .jar-logo {
+    max-width: 120px;       /* smaller on mobile */
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
   }
+
 
   main {
     height: auto;              /* let main expand naturally */
@@ -127,7 +141,7 @@ button:hover {
   }
 
   .description-left {
-    margin-top: 1rem;          /* move it down a bit */
+    margin-top: 2rem;          /* move it down a bit */
     font-size: 1.1rem;         /* smaller on mobile */
   }
 }
