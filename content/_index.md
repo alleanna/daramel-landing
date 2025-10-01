@@ -46,6 +46,8 @@ form.addEventListener('submit', (e) => {
 </script>
 
 
+<!-- Falling date logos -->
+
 <script>
 const logoImages = [
   "/images/logo.png"
@@ -99,7 +101,9 @@ function animate() {
 
   logos.forEach(logo => {
     ctx.drawImage(logo.img, logo.x, logo.y, logo.size, logo.size);
-    logo.y += logo.speed;
+    const isMobile = window.innerWidth <= 480;
+    const speedFactor = isMobile ? 0.5 : 1;
+    logo.y += logo.speed * speedFactor;
     logo.x += Math.sin(logo.y / 50); // optional slight side-to-side drift
 
     if (logo.y > canvas.height) {

@@ -115,7 +115,19 @@ button:hover {
     width: 100%;
   }
 
+  .description-left {
+    font-size: 1.1rem;     /* smaller for mobile */
+    margin-top: 1rem;      /* reduce spacing */
+  }
+
   main {
-    padding: 1.5rem 1rem;
+    height: auto;              /* let main expand naturally */
+    justify-content: flex-start; /* stack from top instead of vertical center */
+    padding-top: 1rem;         /* optional: small top space */
+  }
+
+  .description-left {
+    margin-top: 1rem;          /* move it down a bit */
+    font-size: 1.1rem;         /* smaller on mobile */
   }
 }
