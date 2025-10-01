@@ -1,1 +1,7 @@
 baseURL = "https://www.eatdaramel.com"
+
+[[redirects]] 
+    from = "http://*"
+    to = "https://:splat"
+    status = 301
+    force = true
