@@ -3,6 +3,7 @@ html, body {
   height: 100%;
 }
 
+
 main {
   display: flex;
   flex-direction: column;
@@ -29,9 +30,10 @@ main {
   text-align: center;
 }
 
+
 h1 {
   font-family: 'Mali', cursive;
-  font-size: 9 rem !important;
+  font-size: 4.5rem !important;
   margin-top: 0;
   margin-bottom: 0.5rem;
 
@@ -42,6 +44,16 @@ p.description {
   margin-bottom: 2rem;
   color: #5A2B22;
 
+}
+
+.description-left {
+  align-self: flex-start;  /* left-align inside flex */
+  text-align: left;
+  width: 100%;
+  color: #5A2B22 !important;
+  font-size: 1.4 rem;
+  margin-bottom: 2rem;
+  margin-top: 2rem; /* add some space from top */
 }
 
 img {
