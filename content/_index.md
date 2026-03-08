@@ -2,6 +2,9 @@
 title = "Daramel"
 +++
 
+<canvas id="game-canvas" width="400" height="500" style="border:2px solid #5A2B22; margin-top:2rem;"></canvas>
+<p id="game-score" style="font-weight:bold; color:#5A2B22;">Score: 0</p>
+
 
 <main>
 
