@@ -370,7 +370,7 @@ Introducing...
 
 
 <p class="description">
-dates are a fruit known as “nature’s caramel”. daramel celebrates the delicious & nutritious characteristics of dates - no added sugar needed! daramel is the perfect addition to ice cream, yogurt, coffee, toast, pancakes, or straight from a spoon!
+
 </p>
 
 
@@ -400,7 +400,7 @@ form.addEventListener('submit', (e) => {
 });
 </script>
 
-<div class="social-follow">
+<div class="social-follow" style="margin-bottom: 8rem">
   <p>follow along!</p>
   <a href="https://www.tiktok.com/@eatdaramel" target="_blank" aria-label="TikTok">
     <i class="fab fa-tiktok social-icon"></i>
