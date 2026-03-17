@@ -95,7 +95,7 @@ window.addEventListener('resize', resizeCanvas);
   function initGame() {
     state = 'idle';
     score = 0;
-    speed = 4;
+    speed = 6;
     frameCount = 0;
     spawnTimer = 0;
     obstacles = [];
@@ -211,32 +211,103 @@ window.addEventListener('resize', resizeCanvas);
     ctx.stroke();
   }
 
-  function drawSugarCube(ob) {
+function drawBulbul(ob) {
     const x = ob.x, y = ob.y, w = ob.w, h = ob.h;
-    ctx.fillStyle = COLORS.sugar;
-    ctx.strokeStyle = COLORS.sugarBorder;
-    ctx.lineWidth = 1.5;
+    const cx = x + w / 2;
+    const cy = y + h / 2;
+    const moving = ob.moving !== false;
+
+    // Body
+    ctx.fillStyle = '#9E9E9E';
     ctx.beginPath();
-    ctx.roundRect(x, y, w, h, 3);
+    ctx.ellipse(cx, cy + 2, w * 0.38, h * 0.28, 0.2, 0, Math.PI * 2);
     ctx.fill();
-    ctx.stroke();
 
-    ctx.strokeStyle = '#D8A79E';
-    ctx.lineWidth = 0.8;
+    // Wing
+    ctx.fillStyle = '#757575';
     ctx.beginPath();
-    ctx.moveTo(x + w * 0.33, y);
-    ctx.lineTo(x + w * 0.33, y + h);
-    ctx.moveTo(x + w * 0.66, y);
-    ctx.lineTo(x + w * 0.66, y + h);
-    ctx.moveTo(x, y + h * 0.5);
-    ctx.lineTo(x + w, y + h * 0.5);
+    ctx.ellipse(cx + 2, cy + 4, w * 0.28, h * 0.18, 0.3, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Yellow rump/tail patch
+    ctx.fillStyle = '#FFD600';
+    ctx.beginPath();
+    ctx.ellipse(cx + w * 0.32, cy + 6, w * 0.12, h * 0.1, 0.1, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Tail feathers
+    ctx.fillStyle = '#616161';
+    ctx.beginPath();
+    ctx.moveTo(cx + w * 0.3, cy + 4);
+    ctx.lineTo(cx + w * 0.58, cy - 2);
+    ctx.lineTo(cx + w * 0.55, cy + 2);
+    ctx.lineTo(cx + w * 0.58, cy + 6);
+    ctx.lineTo(cx + w * 0.3, cy + 8);
+    ctx.closePath();
+    ctx.fill();
+
+    // Black head
+    ctx.fillStyle = '#1A1A1A';
+    ctx.beginPath();
+    ctx.ellipse(cx - w * 0.22, cy - h * 0.18, w * 0.2, h * 0.2, -0.1, 0, Math.PI * 2);
+    ctx.fill();
+
+    // White cheek patch
+    ctx.fillStyle = '#F5F5F5';
+    ctx.beginPath();
+    ctx.ellipse(cx - w * 0.28, cy - h * 0.08, w * 0.1, h * 0.1, 0, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Beak — open if eating, closed if flying
+    ctx.fillStyle = '#424242';
+    if (ob.chomping) {
+      // Open beak
+      ctx.beginPath();
+      ctx.moveTo(cx - w * 0.42, cy - h * 0.18);
+      ctx.lineTo(cx - w * 0.62, cy - h * 0.12);
+      ctx.lineTo(cx - w * 0.42, cy - h * 0.1);
+      ctx.closePath();
+      ctx.fill();
+      ctx.beginPath();
+      ctx.moveTo(cx - w * 0.42, cy - h * 0.18);
+      ctx.lineTo(cx - w * 0.62, cy - h * 0.22);
+      ctx.lineTo(cx - w * 0.42, cy - h * 0.24);
+      ctx.closePath();
+      ctx.fill();
+    } else {
+      ctx.beginPath();
+      ctx.moveTo(cx - w * 0.42, cy - h * 0.18);
+      ctx.lineTo(cx - w * 0.62, cy - h * 0.17);
+      ctx.lineTo(cx - w * 0.42, cy - h * 0.12);
+      ctx.closePath();
+      ctx.fill();
+    }
+
+    // Eye
+    ctx.fillStyle = '#ffffff';
+    ctx.beginPath();
+    ctx.arc(cx - w * 0.26, cy - h * 0.2, 2.5, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = '#1A1A1A';
+    ctx.beginPath();
+    ctx.arc(cx - w * 0.27, cy - h * 0.21, 1.2, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Legs
+    ctx.strokeStyle = '#424242';
+    ctx.lineWidth = 1.5;
+    ctx.lineCap = 'round';
+    const legSwing = moving ? Math.sin((ob.legFrame || 0) * 0.4) * 4 : 0;
+    ctx.beginPath();
+    ctx.moveTo(cx - 4, cy + h * 0.26);
+    ctx.lineTo(cx - 4 - legSwing, cy + h * 0.44);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(cx + 4, cy + h * 0.26);
+    ctx.lineTo(cx + 4 + legSwing, cy + h * 0.44);
     ctx.stroke();
 
-    ctx.fillStyle = '#5A2B22';
-    ctx.font = 'bold 9px sans-serif';
-    ctx.textAlign = 'center';
-    ctx.fillText('sugar', x + w / 2, y + h / 2 + 3);
-    ctx.textAlign = 'left';
+    if (ob.legFrame !== undefined) ob.legFrame++;
   }
 
   function spawnObstacle() {
@@ -250,7 +321,8 @@ window.addEventListener('resize', resizeCanvas);
       x: W + 10,
       y: GROUND + 20 - t.h,
       w: t.w,
-      h: t.h
+      h: t.h,
+      legFrame: 0
     });
   }
 
@@ -326,7 +398,7 @@ window.addEventListener('resize', resizeCanvas);
 
     for (let i = obstacles.length - 1; i >= 0; i--) {
       obstacles[i].x -= speed;
-      drawSugarCube(obstacles[i]);
+      drawBulbul(obstacles[i]);
       if (obstacles[i].x + obstacles[i].w < 0) {
         obstacles.splice(i, 1);
         continue;
