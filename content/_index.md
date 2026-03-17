@@ -34,7 +34,7 @@ title = "Daramel"
 #daramel-hint {
   margin-top: 10px;
   font-size: 13px;
-  color: #D8A79E;
+  color: #5A2B22;
 }
 
 #daramel-canvas {
@@ -49,7 +49,7 @@ title = "Daramel"
 }
 </style>
 
-<div id="daramel-game-wrap" style="margin-top: 8rem; position: relative; z-index: 10000;">
+<div id="daramel-game-wrap" style="margin-top: 8rem; margin-bottom: 3rem; position: relative; z-index: 10000;">
   <div id="daramel-score-bar">
     <span>score: <span id="d-score">0</span></span>
     <span>best: <span id="d-best">0</span></span>
@@ -358,15 +358,16 @@ window.addEventListener('resize', resizeCanvas);
 
 <main>
 
-<p class="description-left">
+<!-- <p class="description-left">
 Introducing...
-</p>
+</p> -->
 
 <!-- <img src="/images/logo.png" alt="Logo"> -->
 
-<img src="/images/jar.png" alt="Jar" class="jar-logo">
+<!-- <img src="/images/jar.png" alt="Jar" class="jar-logo"> -->
 
-# DARAMEL
+
+<h1 style="margin-top: 8rem;">DARAMEL</h1>
 
 
 <p class="description">
