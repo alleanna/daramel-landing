@@ -400,6 +400,14 @@ form.addEventListener('submit', (e) => {
 });
 </script>
 
+<div data-behold-id="EvcDJTv3YsLUrbOq5DH4"></div>
+<script>
+  (function() {
+    const d=document,s=d.createElement("script");s.type="module";
+    s.src="https://w.behold.so/widget.js";d.head.append(s);
+  })();
+</script>
+
 <div class="social-follow" style="margin-bottom: 8rem">
   <p>follow along!</p>
   <a href="https://www.tiktok.com/@eatdaramel" target="_blank" aria-label="TikTok">
